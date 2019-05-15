@@ -4,5 +4,5 @@ export const config = {
   databaseURL: "https://ionictrabalho-843fc.firebaseio.com",
   projectId: "ionictrabalho-843fc",
   storageBucket: "ionictrabalho-843fc.appspot.com",
-  messagingSenderId: "267533749097",
-};
+  messagingSenderId: "267533749097"
+  };

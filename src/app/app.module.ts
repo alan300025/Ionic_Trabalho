@@ -8,21 +8,22 @@ import { Welcome } from '../pages/welcome/welcome';
 import { Login } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 //Autenticação
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ALTERAÇÃO 01 PASSO 6°
-// Importações para funcionamento do Firebase e da Autenticação
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-// Configurações do FIREBASE
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
+//Config do firebas, banco de dados
 import { config } from '../config';
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FIM DA ALTERAÇÃO 01
+
 //geo
 import { Geolocation } from '@ionic-native/geolocation'; 
-//geo
-//Login
 
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+//Photo
+import { Camera } from '@ionic-native/camera';
+
+
+
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -31,13 +32,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { AuthProvider } from '../providers/auth/auth';
 
+import { AppUsersProvider } from '../providers/app-users/app-users';
+import { EventosProvider } from '../providers/eventos/eventos';
+import { EventoListarPage } from '../pages/evento-listar/evento-listar';
+import { TodosPage } from '../pages/todos/todos';
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
+    EventoListarPage,
+    TodosPage,
     Welcome,
     Login,
     SignupPage,
@@ -46,20 +51,20 @@ import { AuthProvider } from '../providers/auth/auth';
   imports: [
     BrowserModule, HttpModule,
     IonicModule.forRoot(MyApp),
-    
-    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ALTERAÇÃO 03 PASSO 6°
-    // Configurações do Firebase
+   
+    // Configurações do Firebase e autenticação do firebase
     AngularFireModule.initializeApp(config),
-    // Configuração do serviço de autenticação do firebase
+
     AngularFireAuthModule,
-    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FIM DA ALTERAÇÃO 03
+
+    AngularFirestoreModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
+    EventoListarPage,
+    TodosPage,
     Welcome,
     Login,
     SignupPage,
@@ -69,7 +74,9 @@ import { AuthProvider } from '../providers/auth/auth';
     StatusBar,
     SplashScreen,//AuthServiceProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider,Geolocation
+    AuthProvider,Geolocation,
+    AppUsersProvider,Camera,
+    EventosProvider
   ]
 })
 export class AppModule {}

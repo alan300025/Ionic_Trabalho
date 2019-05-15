@@ -1,14 +1,85 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>Home</ion-title> 
-          <ion-icon  name="ios-contact-outline"></ion-icon> 
-    </ion-navbar> 
-   
-  </ion-header>
+  <ion-navbar>
+    
+    <ion-title>Criar Evento</ion-title>
+    
+    <ion-buttons end>
+
+      <button ion-button icon-only (click)="sair()">
+        <ion-icon name="ios-log-out-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <div #map2 id="map"></div>
+
+  <ion-card>
+
+  <ion-card-content>
+    
+      <ion-item>
+          <ion-label floating>Tipo eventos</ion-label>
+          <ion-select okText="Ok" cancelText="Cancelar" [(ngModel)]="eventos.tipo">
+               <ion-option value="Privada"><strong>Privado</strong></ion-option>
+              <ion-option value="Publica"><strong>Publica</strong></ion-option>
+            </ion-select>
+        </ion-item>
+
+
+      <ion-item>
+          <ion-label floating>Descreva o Evento </ion-label>
+          <ion-textarea type="text" [(ngModel)]="eventos.descricao" maxlength="400"></ion-textarea>
+      </ion-item> 
+
+      <ion-item>
+          <ion-label floating>Rua </ion-label>
+          <ion-input type="text" [(ngModel)]="eventos.rua" maxlength="100"></ion-input>
+     </ion-item>
+
+        <ion-item>
+            <ion-label floating>Bairro </ion-label>
+            <ion-input type="text" [(ngModel)]="eventos.bairro" maxlength="100"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label floating>Número da casa/local</ion-label>
+              <ion-input type="tel" [(ngModel)]="eventos.numeroCasa" maxlength="100"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Telefone para Informacoes</ion-label>
+            <ion-input type="tel" [(ngModel)]="eventos.telefone" maxlength="14"></ion-input>
+      </ion-item>
+
   
-  <ion-content padding>
-
-          <div #map id="map"></div>
 
 
-  </ion-content>
+
+
+    <ion-item>
+        <div style="display:flex; flex-direction:column;justify-content:center">
+
+
+            <button ion-button round color="" (click)="capture()"><ion-icon name="md-camera">
+
+            </ion-icon> Tire a foto!</button>
+        
+            <img [src]="captureDataUrl"  *ngIf="captureDataUrl"/>
+            
+          </div>
+    </ion-item>   
+             
+    <button ion-button color="secondary" block (click)="adicionar(eventos)">
+        Adicionar
+    </button>
+  
+  </ion-card-content>
+
+</ion-card>
+  
+</ion-content>
