@@ -20,15 +20,14 @@
   
     <ion-card-content>
       <ion-card-title>
-        <ion-icon name="md-arrow-dropright" item-start ></ion-icon><a>Localização:</a> La {{ evento.latitude }} / Lon {{ evento.longitude }}   <ion-icon name="md-arrow-dropright" item-start ></ion-icon>
+        <ion-icon name="md-arrow-dropright" item-start ></ion-icon><a>Nome Evento:</a> {{ evento.nomeEvento }}
+        <ion-icon name="md-arrow-dropright" item-start ></ion-icon><a>Resposavel:</a> {{ evento.nomeCriador }}
+        <ion-icon name="md-arrow-dropright" item-start ></ion-icon><a>Localização:</a> La {{ evento.latitude }} / Lon {{ evento.longitude }}
         </ion-card-title>
       <p>
-        <ion-icon name="md-calendar" item-start ></ion-icon><a>DATA ENVIO:</a> {{ evento.dataEnvio }}
+        <ion-icon name="md-calendar" item-start ></ion-icon><a>DATA ENVIO:</a> {{ evento.dataEnvio }} <ion-icon name="md-calendar" item-start ></ion-icon><a>DATA DO EVENTO:</a> {{ evento.data }}
       </p>
     </ion-card-content>
   </ion-card>
-  </ion-content>
-
-<ion-content padding>
-
 </ion-content>
+

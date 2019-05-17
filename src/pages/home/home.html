@@ -30,6 +30,20 @@
             </ion-select>
         </ion-item>
 
+        <ion-item>
+            <ion-label floating>Nome do Evento </ion-label>
+            <ion-textarea type="text" [(ngModel)]="eventos.nomeEvento" maxlength="400"></ion-textarea>
+        </ion-item> 
+
+        <ion-item>
+          <ion-label floating>Quem ou qual empresa Resposavel? </ion-label>
+          <ion-textarea type="text" [(ngModel)]="eventos.nomeCriador" maxlength="400"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Dia do evento</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY"  [(ngModel)]="eventos.data" min="2019" max="2050" placeholder="Selecionar Data"></ion-datetime>
+        </ion-item> 
 
       <ion-item>
           <ion-label floating>Descreva o Evento </ion-label>

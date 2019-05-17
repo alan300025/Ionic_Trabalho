@@ -36,6 +36,8 @@ import { AppUsersProvider } from '../providers/app-users/app-users';
 import { EventosProvider } from '../providers/eventos/eventos';
 import { EventoListarPage } from '../pages/evento-listar/evento-listar';
 import { TodosPage } from '../pages/todos/todos';
+import { EventoTodosProvider } from '../providers/evento-todos/evento-todos';
+import { EventosTodosProvider } from '../providers/eventos-todos/eventos-todos';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import { TodosPage } from '../pages/todos/todos';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,Geolocation,
     AppUsersProvider,Camera,
-    EventosProvider
+    EventosProvider,
+    EventoTodosProvider,
+    EventosTodosProvider
   ]
 })
 export class AppModule {}
