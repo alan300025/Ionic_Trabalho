@@ -30,6 +30,7 @@
     "@ionic/storage": "2.2.0",
     "angular2-signaturepad": "^2.8.0",
     "angularfire2": "^5.1.0",
+    "cordova-android": "8.0.0",
     "cordova-browser": "5.0.4",
     "cordova-plugin-camera": "4.0.3",
     "cordova-plugin-device": "^2.0.2",
@@ -72,7 +73,8 @@
       "cordova-plugin-firebase": {}
     },
     "platforms": [
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }

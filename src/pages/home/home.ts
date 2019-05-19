@@ -16,10 +16,12 @@ declare var google: any;
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { AuthProvider } from '../../providers/auth/auth';
 import { EventosProvider } from '../../providers/eventos/eventos';
+import { EventosTodosProvider } from '../../providers/eventos-todos/eventos-todos';
 import { AppUsers } from '../../models/app-users';
 import { Observable } from 'rxjs';
 import { Welcome } from '../welcome/welcome';
 import { EventoListarPage } from '../evento-listar/evento-listar';
+import { EventosTodos } from '../../models/eventos-todos';
 @IonicPage()
 @Component({ selector: 'page-home', templateUrl: 'home.html' })
 
@@ -34,10 +36,13 @@ export class HomePage {
   appUsers: Observable<AppUsers[]>;
   // Definição do atributo tarefa que será usado para o cadastro
   public eventos = {} as Eventos;
+  public eventosTodos = {} as EventosTodos;
+
 
   // Adicionando o serviço de tarefa no construtor
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private eventosProvider: EventosProvider,
+    private eventosTodosProvider: EventosTodosProvider,
     public alertCtrl: AlertController,
     public platform: Platform,
     private geolocation: Geolocation,
@@ -120,7 +125,7 @@ export class HomePage {
   }
 
   // Método que será usado para adicionar uma tarefa
-  adicionar(eventos: Eventos) {
+  adicionar(eventos: Eventos, eventosTodos: EventosTodos) {
     let storageRef = firebase.storage().ref();
 
     const filename = Math.floor(Date.now() / 1000);
@@ -152,13 +157,32 @@ export class HomePage {
         var ano = data.getFullYear();
 
         eventos.dataEnvio = diaReal + "/" + mesReal + "/" + ano + "";
-
+       
         eventos.latitude= this.latitudeFinal;
         eventos.longitude = this.longitudeFinal;
 
         eventos.foto = url;
         eventos.app = true;
+        //todos
+        //
+        eventosTodos.tipo=eventos.tipo;
+        eventosTodos.nomeEvento=eventos.nomeEvento;
+        eventosTodos.nomeCriador =eventos.nomeCriador;
+        eventosTodos.data=eventos.data;
+        eventosTodos.rua=eventos.descricao;
+        eventosTodos.rua=eventos.rua;
+        eventosTodos.bairro=eventos.bairro;
+        eventosTodos.numeroCasa=eventos.numeroCasa;
+        eventosTodos.telefone=eventos.telefone;
+        ///
+        eventosTodos.dataEnvio = diaReal + "/" + mesReal + "/" + ano + "";
+        
+        eventosTodos.latitude= this.latitudeFinal;
+        eventosTodos.longitude = this.longitudeFinal;
+        eventosTodos.app = true;
+        eventosTodos.foto = url;
         this.eventosProvider.adicionar(eventos);
+        this.eventosTodosProvider.adicionar(eventosTodos);
         this.showSuccesfulUploadAlert();
         console.log(eventos.dataEnvio);
       });

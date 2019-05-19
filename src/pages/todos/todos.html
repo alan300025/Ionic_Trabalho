@@ -7,12 +7,25 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>todos</ion-title>
+    <ion-title>Geral</ion-title>
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>
 
+  <ion-card *ngFor="let evento of eventos | async">
+  
+      <img [src]="evento.foto"/>
+  
+    <ion-card-content>
+      <ion-card-title>
+        <ion-icon name="md-arrow-dropright" item-start ></ion-icon><a>Nome Evento:</a> {{ evento.nomeEvento }}
+        <ion-icon name="md-arrow-dropright" item-start ></ion-icon><a>Resposavel:</a> {{ evento.nomeCriador }}
+        <ion-icon name="md-arrow-dropright" item-start ></ion-icon><a>Localização:</a> La {{ evento.latitude }} / Lon {{ evento.longitude }}
+        </ion-card-title>
+      <p>
+        <ion-icon name="md-calendar" item-start ></ion-icon><a>DATA ENVIO:</a> {{ evento.dataEnvio }} <ion-icon name="md-calendar" item-start ></ion-icon><a>DATA DO EVENTO:</a> {{ evento.data }}
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

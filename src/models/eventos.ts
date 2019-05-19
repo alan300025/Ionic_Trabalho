@@ -1,5 +1,10 @@
 
 export interface Eventos {
+  nomeEvento: any;
+  nomeCriador: any;
+  data: any;
+  numeroCasa: any;
+
    tipoEvento: string;
    id: number;
    app: boolean;
@@ -9,6 +14,7 @@ export interface Eventos {
    dataEnvio: any;
    foto: string;
    fotoReferencia: string;
+   email: string;
 
    
     //Endereco

@@ -67,9 +67,10 @@ export class EventosProvider {
   adicionar(evento: Eventos) {
     this.auth.user.subscribe(auth => {
 
+      /*
       if(evento.tipoEvento == "Privado" || evento.tipoEvento == ""){
             evento.idUser="";
-        }else evento.idUser = auth.uid;    
+      }else evento.idUser = auth.uid;  */    
         
         this.eventosColllection.add(evento);
    });

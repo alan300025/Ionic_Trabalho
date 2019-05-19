@@ -1,5 +1,10 @@
 
 export interface EventosTodos {
+  nomeEvento: any;
+  nomeCriador: any;
+  data: any;
+  numeroCasa: any;
+  email: string;
     tipoEvento: string;
     id: number;
     app: boolean;
